@@ -10,7 +10,29 @@ def gcd_naive(a, b):
 
     return current_gcd
 
-if __name__ == "__main__":
-    input = sys.stdin.read()
-    a, b = map(int, input.split())
-    print(gcd_naive(a, b))
+def gcd(a, b):
+    pass
+
+def test_solution(max_runtime):
+    # max_runtime in seconds
+    import time
+    import random
+    random.seed(1)
+    start_time = time.time()
+    
+    while (time.time() <= start_time + max_runtime):
+        n = random.randint(0, 10000)
+        if gcd_naive(n) == gcd(n):
+            print("Solution passes for n =", n)
+        else:
+            print("Solution fails with n=", n)
+            print("get_fibonacci_last_digit_naive({n}) = {x}".format(n=n, x=gcd_naive(n)))
+            print("get_fibonacci_last_digit({n}) = {x}".format(n=n, x=gcd(n)))
+            return
+
+#if __name__ == "__main__":
+#    input = sys.stdin.read()
+#    a, b = map(int, input.split())
+#    print(gcd(a, b))
+
+test_solution(30)
